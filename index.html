@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>!!!Feliz Aniversario¡¡¡</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 88.8L15.3 54.1c-15.3-15.3-15.3-40.2 0-55.5s40.2-15.3 55.5 0 15.3 40.2 0 55.5L50 88.8z' fill='%23ff69b4'/><text x='50' y='60' font-size='50' text-anchor='middle' fill='white'>1</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
         body::before {
@@ -15,13 +14,12 @@
             width: 100%;
             height: 100%;
             background-image: url('./fondo.jpg');
-            background-size: 300px;
+            background-size: cover; /* Ajustar para que cubra toda la pantalla */
             background-position: center;
-            background-repeat: repeat;
             filter: brightness(0.7);
             z-index: -1;
         }
-        
+
         body {
             margin: 0;
             padding: 0;
@@ -34,6 +32,11 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             overflow: hidden;
             position: relative;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .message {
             text-align: center;
@@ -88,21 +91,12 @@
             filter: drop-shadow(0 0 5px rgba(255, 20, 147, 0.8));
         }
         @keyframes float {
-            0% { 
-                transform: translateY(100vh) scale(0) rotate(0deg);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-50vh) scale(1.2) rotate(180deg);
-                opacity: 0.8;
-            }
-            100% { 
-                transform: translateY(-100vh) scale(0.8) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-50vh) scale(1.2) rotate(180deg); opacity: 0.8; }
+            100% { transform: translateY(-100vh) scale(0.8) rotate(360deg); opacity: 0; }
         }
         .sparkle {
-            display: none;
+            display: block;
             position: absolute;
             width: 4px;
             height: 4px;
@@ -118,10 +112,12 @@
     </style>
 </head>
 <body>
-    <div class="message">
-        !!!FELIZ ANIVERSARIO MI AMOR¡¡¡
-        <div class="kitten">
-            <img src="https://imgs.search.brave.com/r3OljCvVUFU2maS9lKbk0m7yUqEqpAkeDIuqsodcnt4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9vc2Fr/YS5ueWMzLmNkbi5k/aWdpdGFsb2NlYW5z/cGFjZXMuY29tLzAw/MDRfdG9wX20vc3Rp/Y2tlci1mYW5fOTQw/NTExNV9tLndlYnA" alt="Gatito dando un beso">
+    <div class="container">
+        <div class="message">
+            !!!FELIZ ANIVERSARIO MI AMOR¡¡¡
+            <div class="kitten">
+                <img src="https://imgs.search.brave.com/r3OljCvVUFU2maS9lKbk0m7yUqEqpAkeDIuqsodcnt4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9vc2Fr/YS5ueWMzLmNkbi5k/aWdpdGFsb2NlYW5z/cGFjZXMuY29tLzAw/MDRfdG9wX20vc3Rp/Y2tlci1mYW5fOTQw/NTExNV9tLndlYnA" alt="Gatito dando un beso">
+            </div>
         </div>
         <button class="love-button" onclick="createHearts()">TE AMO MUCHO MÁS</button>
     </div>
@@ -148,12 +144,18 @@
         }
 
         function createSparkles() {
-            // Desactivada la función de sparkles
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            document.body.appendChild(sparkle);
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
         }
 
-        // Eliminar el intervalo de sparkles
         const isMobile = window.innerWidth < 768;
-        // setInterval(createSparkles, 3000);
+        setInterval(createSparkles, 3000);
     </script>
 </body>
 </html>
