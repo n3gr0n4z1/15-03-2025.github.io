@@ -101,6 +101,7 @@
             }
         }
         .sparkle {
+            display: none;
             position: absolute;
             width: 4px;
             height: 4px;
@@ -146,22 +147,12 @@
         }
 
         function createSparkles() {
-            for (let i = 0; i < 20; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.classList.add('sparkle');
-                sparkle.style.left = Math.random() * 100 + 'vw';
-                sparkle.style.top = Math.random() * 100 + 'vh';
-                sparkle.style.animationDelay = Math.random() * 2 + 's';
-                document.body.appendChild(sparkle);
-
-                setTimeout(() => {
-                    sparkle.remove();
-                }, 1500);
-            }
+            // Desactivada la función de sparkles
         }
 
-        // Crear sparkles iniciales
-        setInterval(createSparkles, 2000);
+        // Eliminar el intervalo de sparkles
+        const isMobile = window.innerWidth < 768;
+        // setInterval(createSparkles, 3000);
     </script>
 </body>
 </html>
